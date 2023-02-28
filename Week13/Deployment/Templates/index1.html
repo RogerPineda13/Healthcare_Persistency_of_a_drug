@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+<body>
+    <div class="login">
+       <h1>Predict Persistency</h1>
+   
+        <!-- Main Input For Receiving Query to our ML -->
+       <form action="{{ url_for('predict')}}"method="post">
+           <input type="number" name="Gender" placeholder="Gender" required="required" min="0" max="1"/>
+           <input type="number" name="Race" placeholder="Race" required="required" min="0" max="5" />
+           <input type="number" name="Region" placeholder="Region" required="required" min="0" max ="50" />
+           <input type="number" name="Age_Bucket" placeholder="Age_Bucket" required="required" min="0" max ="5" />
+           <input type="number" name="Ntm_Specialist" placeholder="Ntm_Speciality" required="required" min="0" max="10"/>
+           <input type="number" name="Gluco_Record_During_Rx" placeholder="Gluco_Record_During_Rx" required="required" min="0" max="100" step=".1" />
+           <input type="number" name="Dexa_During_Rx" placeholder="Dexa_During_Rx" required="required" min="0" max="5" step=".001"/>
+           <input type="number" name="Frag_Frac_During_Rx" placeholder="Frag_Frac_During_Rx" required="required" min="0" max="10" />
+           <input type="number" name="Risk_Segment_Prior_Ntm" placeholder="Risk_Segment_Prior_Ntm" required="required" min="0" max="1" step=".1" />
+           <input type="number" name="T_Score_Bucket_Prior_Ntm" placeholder="T_Score_Bucket_Prior_Ntm" required="required" min="0" max="5" step=".001"/>
+           <input type="number" name="Comorb_Long_Term_Current_Drug_Therapy" placeholder="Comorb_Long_Term_Current_Drug_Therapy" required="required" min="0" max="10" />
+   
+           <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+       </form>
+   
+      <br>
+      <br>
+      {{ prediction_text }}
+   
+    </div>
+    <img src="/static/images/Original.svg" style="width: 400px;position: absolute;bottom: 10px;left: 10px;" alt="Company Logo"/>
+   
+   </body>
+   </html>
